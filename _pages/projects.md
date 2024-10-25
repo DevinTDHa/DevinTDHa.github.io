@@ -5,7 +5,7 @@ permalink: /projects/
 description: A selection of projects I did in my free time.
 nav: true
 nav_order: 3
-display_categories: []
+#display_categories: []
 horizontal: false
 ---
 
