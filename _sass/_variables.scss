@@ -5,24 +5,42 @@
 
 @use "sass:color";
 
-// Colors
-$red-color: #ff3636 !default;
-$red-color-dark: #b71c1c !default;
-$orange-color: #f29105 !default;
-$blue-color: #0076df !default;
-$blue-color-dark: #00369f !default;
-$cyan-color: #2698ba !default;
-$light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
-$green-color: #00ab37 !default;
-$green-color-lime: #b7d12a !default;
-$green-color-dark: #009f06 !default;
-$green-color-light: #ddffdd !default;
-$green-color-bright: #11d68b !default;
-$purple-color: #b509ac !default;
-$light-purple-color: color.adjust($purple-color, $lightness: 25%);
-$pink-color: #f92080 !default;
-$pink-color-light: #ffdddd !default;
-$yellow-color: #efcc00 !default;
+// Default Colors
+// $red-color: #ff3636 !default;
+// $red-color-dark: #b71c1c !default;
+// $orange-color: #f29105 !default;
+// $blue-color: #0076df !default;
+// $blue-color-dark: #00369f !default;
+// $cyan-color: #2698ba !default;
+// $light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
+// $green-color: #00ab37 !default;
+// $green-color-lime: #b7d12a !default;
+// $green-color-dark: #009f06 !default;
+// $green-color-light: #ddffdd !default;
+// $green-color-bright: #11d68b !default;
+// $purple-color: #b509ac !default;
+// $light-purple-color: color.adjust($purple-color, $lightness: 25%);
+// // $pink-color: #f92080 !default;
+// // $pink-color-light: #ffdddd !default;
+// $yellow-color: #efcc00 !default;
+
+// Gruvbox Dark
+$red-color-dark: #fb4934;
+$yellow-color-dark: #fabd2f;
+$blue-color-dark: #83a598;
+$purple-color-dark: #d3869b;
+$green-color-dark: #8ec07c;
+$gray-color-dark: #928374;
+$orange-color-dark: #fe8019;
+
+// Gruvbox Light
+$red-color: #9d0006;
+$yellow-color: #b57614;
+$blue-color: #076678;
+$purple-color: #8f3f71;
+$green-color: #427b58;
+$orange-color: #af3a03;
+$gray-color: #928374;
 
 $grey-color: #828282 !default;
 $grey-color-light: color.adjust($grey-color, $lightness: 40%);
