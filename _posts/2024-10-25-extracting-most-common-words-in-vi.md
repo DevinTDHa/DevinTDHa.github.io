@@ -12,15 +12,9 @@ thumbnail: assets/img/projects/VN/word_frequencies_log10.png
 related_publications: true
 ---
 
-- Goal: Learning vietnamese by creating Anki cards for the most frequent words
-- Problem:
-  - Resources online are lacking and are of low quality. Which words to choose?
-  - Also adding cards wastes a lot of time and is boring and tedious
-    - Hint at next part where we create the Anki cards automatically
-- Solution:
-  - Gathering Corpora, analazying and filtering with wiktionary dump and FreeDict.
+This post is the first in a series about tools for Vietnamese language learning tools. I will describe, how we can extract the most common words in a number of corpora in the Vietnamese language.
 
-This post is the first in a series about tools for Vietnamese language learning tools. For the whole project, see the [Projects page](/projects).
+For the whole project, see the [Projects page](/projects).
 
 > **Summary**
 >
@@ -28,9 +22,9 @@ This post is the first in a series about tools for Vietnamese language learning 
 
 ## Goal
 
-When learning a language, is it useful to know some words of the target language to understand it and be able to communicate with other people. But in which order should we learn the new words?
+When learning a language, is it useful to know some words of the target language to understand it and be able to communicate with other people. But in which order should we learn these new words?
 
-As a starting point, I assumed that learning the most frequent words would be pretty good. And indeed, I read some discussions CITE where people also agree with this (seems like it is an uphill battle though). While just learning the most common words will not suddenly help me become fluent, it certainly would help me to read and immerse myself more without having to pick up the dictionary all the time.
+As a starting point, I assumed that learning the most frequent words would be pretty good. And indeed, I read some discussions  {% cite liPowerLawDistribution2017 SizeVocabularySet %} where people also agree with this. While just learning the most common words will not suddenly help me become fluent, it certainly would help me to read and immerse myself more without having to pick up the dictionary all the time.
 
 So I downloaded the [first Anki deck I found on the internet](https://Ankiweb.net/shared/info/1903023972) and started learning.
 
@@ -42,9 +36,6 @@ Pretty soon however, I found some problems with the Anki deck:
 2. The quality of translations is lacking for lots of cards
 3. Using 5 minutes of research, I have no idea how these words were extracted in the first place. Seems to be quite random at times.
 
-<!-- https://wortschatz.uni-leipzig.de/en/download/ -->
-<!-- https://github.com/rspeer/wordfreq -->
-<!-- https://github.com/rspeer/wordfreq -->
 So I set out to improve my learning experience. While other frequency lists exist CITE, I wanted to create my own for fun with the data I already had.
 
 *Note: While researching for this blog post I realized that I really should have looked deeper into available resources. For example, I could've easily used available word frequency lists and included the Wikipedia corpus. Reading Vietnamese Wikipedia is actually my ultimate goal. Whoops 🤦! But at least I learned some things and know better for next time.*
@@ -73,3 +64,6 @@ TODO
 ## Conclusion and Future Work
 
 Next part with automatic Anki card creation.
+
+- Also adding cards wastes a lot of time and is boring and tedious
+- Hint at next part where we create the Anki cards automatically
