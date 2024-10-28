@@ -1,17 +1,19 @@
 ---
 layout: page
 title: Tools for Vietnamese Language Learning
-description: Series of tools for vietnamese language learning
-img: assets/img/projects/VN/word_frequencies_log10.png
+description: Series of posts describing tools for Vietnamese language learning
+img: assets/img/projects/VN/anki_vietnam.png
 #importance: 1
 category: Vietnamese
-#related_publications: true
+related_publications: true
 date: 2024-10-25
 toc: 
-    beginning: true
+  beginning: true
 ---
 
 This year I really set out to improve my Vietnamese. My parents are Vietnamese, so I have a base understanding of the language but it frustrates me that I can't talk to them about more topics.
+
+Oh, and special thanks to my girlfriend for providing me with the thumbnail image {% cite fayca_anki_vietnamese %}!
 
 # Introduction
 
@@ -21,7 +23,6 @@ The results of this project are the reason I wanted to start a blog in the first
 
 
 TODO
-
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
