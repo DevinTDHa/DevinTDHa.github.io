@@ -15,12 +15,19 @@ This year I really set out to improve my Vietnamese. My parents are Vietnamese, 
 
 Oh, and special thanks to my girlfriend for providing me with the thumbnail image {% cite fayca_anki_vietnamese %}!
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <div style="max-width: 300px; margin: auto;">
+            {% include figure.liquid loading="eager" path="assets/img/projects/VN/anki_vietnam.png" title="duck_494" class="img-fluid rounded z-depth-1" %}
+        </div>
+    </div>
+</div>
+
 # Introduction
 
 This project is about ...
 
 The results of this project are the reason I wanted to start a blog in the first place... to use my skills as a computer scientist to help myself in learning the Vietnamese language and have fun in the process!
-
 
 TODO
 

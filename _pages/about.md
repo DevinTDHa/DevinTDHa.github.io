@@ -12,7 +12,7 @@ profile:
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: false # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
 Hi there and welcome to my page!
@@ -21,7 +21,7 @@ My name is Trung Đức Hà (also known as Devin at work) and I am a masters stu
 
 Outside of work and school, I like to build stuff (whether software or with my hands), learn Vietnamese, play electric guitar/produce music (currently on hold) and if time allows play video games.
 
-I want to use this page to describe some of my personal projects that I am doing. Currently I have a lot of fun building tools to enhance my Vietnamese learning. Check it out in my [Projects page](/projects).
+I want to use this page to describe some of my personal projects that I am doing and let out my thoughts from time to time. Currently, I have a lot of fun building tools to enhance my Vietnamese learning. Check it out in my [Projects page](/projects).
 
 Hopefully my posts will be of use to someone else.
 
