@@ -19,6 +19,7 @@ For the whole project, see the [Projects page](/projects).
 > **Summary**
 >
 > TODO
+>
 > - published code at ...
 
 ## Goal
@@ -52,10 +53,10 @@ Moreover, we can't just use the raw words from the text. While the Vietnamese la
 To illustrate this, let's take the following example sentence:
 
 ```text
-Anh sẽ thành công. (I will succeed.)
+Tối sẽ thành công. (I will succeed.)
 ```
 
-Here, we want to consider the word `thành công` as it means succeed, instead of its compounds. This task is called *text or word segmentation* and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
+Here, we want to consider the words `Tối`, `sẽ` and `thành công` as it means succeed, instead of its compounds. This task is called *text or word segmentation* and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
 
 ## Solution
 
@@ -67,7 +68,7 @@ So to go ahead and extract these words we will need to:
 
 ### Corpora
 
-I wanted to include two types of corpus: First, texts that are more formal such as the news and Wikipedia and second conversations. For this I decided on the following corpora:
+I wanted to include two types of corpus: First, texts that are more formal such as the news and Wikipedia and second more casual conversations. For this I decided on the following corpora:
 
 1. Binhvq News Corpus {% cite vuongquocBinhvqNewscorpusCorpus2024 %}, which includes news with about 111 million words
 2. viwik18 {% cite NTT123Viwik18Vietnamese2018 %}, which is a dump of the vietnamese wikipedia from 2018
@@ -101,7 +102,7 @@ Running the code, it seems like it doesn't use all available resources on my com
 
 I haven't worked with concurrent Java code before and I feel a bit clunky with it. Once I started to use [Scala](https://www.scala-lang.org/) for work, I could never look back. But I never really worked with concurrency in Scala before either at this point and was a bit intimidated by it.
 
-Turns out, that it is actually quite simple in this case! All you have to do is use [parallel collections](https://docs.scala-lang.org/overviews/parallel-collections/overview.html). If we apply the algorithm in parallel to multiple files, we can quite easily achieve some speedup (also known as an [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) problem). The resulting code is quite small, and I published it [in the repo for this post](https://github.com/DevinTDHa/vn-nlp-exp/blob/main/rdrsegmenter_wfreqs/VnCoreNLPScala/src/main/scala/ProcessFolder.scala).
+Turns out, that it is actually quite simple in this case! All you have to do is use [parallel collections](https://docs.scala-lang.org/overviews/parallel-collections/overview.html). If we apply the algorithm in parallel to the files inside these collections, we can quite easily achieve some speedup (also known as an [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) problem). The resulting code is quite small, and I published it [in the repo for this post](https://github.com/DevinTDHa/vn-nlp-exp/blob/main/rdrsegmenter_wfreqs/VnCoreNLPScala/src/main/scala/ProcessFolder.scala).
 
 Using this parallelized code, I was able to completely process all corpora quite quickly. I can't be bothered to run it again, but it must have been less than 2 hours to process everything.
 
@@ -124,7 +125,7 @@ Let's recall that in the [Goal](#goal) section, I described that ... (something 
     </div>
 </div>
 <div class="caption">
-    Word Frequencies on Log10 scale. It's beautiful.
+    Word Frequencies on Log10 scale. TODO: How to read this.
 </div>
 
 ## Conclusion and Future Work
