@@ -314,7 +314,7 @@ scholar:
   last_name: [Ha]
   first_name: [Trung Duc]
 
-  style: apa
+  style: ieee
   locale: en
 
   source: /_bibliography/
@@ -323,7 +323,7 @@ scholar:
   # Note: if you have latex math in your bibtex, the latex filter
   # preprocessing may conflict with MathJAX if the latter is enabled.
   # See https://github.com/alshedivat/al-folio/issues/357.
-  bibtex_filters: [latex, smallcaps, superscript]
+  bibtex_filters: [latex, smallcaps, superscript, markdown]
 
   replace_strings: true
   join_strings: true
@@ -355,7 +355,7 @@ filtered_bibtex_keywords:
     award,
     award_name,
     bibtex_show,
-    blog,
+    #blog,
     code,
     google_scholar_id,
     html,
@@ -366,8 +366,8 @@ filtered_bibtex_keywords:
     selected,
     slides,
     supp,
-    video,
-    website,
+    #video,
+    #website,
   ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
