@@ -14,19 +14,32 @@ related_publications: true
 
 This post is the first in a series about tools for Vietnamese language learning tools. I will describe, how we can extract the most common words in a number of large documents in the Vietnamese language.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/projects/VN/word_frequencies_log10.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    Word Frequencies on Log10 scale. Sneak peak at what's to come!
+</div>
+
 For the whole project, see the [Projects page](/projects).
 
 > **Summary**
 >
-> TODO
+> In this post we will
 >
-> - published code at ...
+> - see where to download and how to process large documents in the Vietnamese language
+> - Perform word segmentation to get the correct meanings of the words
+> - Count the words to get their frequencies to create a vocabulary list for language learning
+>
+> I published the code for this post on GitHub {% cite DevinTDHaVnnlpexpNLP %}.
 
 ## Goal
 
 When learning a language, is it useful to know at least *some* words of the target language to understand it and be able to communicate with other people. But in which order should we learn these new words?
 
-As a starting point, I assumed that learning the most frequent words would be pretty good. And indeed, I read some discussions {% cite liPowerLawDistribution2017 SizeVocabularySet2021 %} where people have a similar approach to learning. In summary, learning the first 1000-2000 most common words lets you understand basic conversations, with more words allowing for more texts. Li {% cite liPowerLawDistribution2017 %} is painting a pretty bleak picture here, who estimates that you will need 27.000 words to become near fluent!
+As a starting point, I assumed that learning the most frequent words would be pretty good. And indeed, I read some discussions {% cite liPowerLawDistribution2017 SizeVocabularySet2021 %} where people have a similar approach to learning. In summary, learning the first 1000-2000 most common words lets you understand basic conversations, with more words allowing for more texts. Li {% cite liPowerLawDistribution2017 %} is painting a pretty bleak picture here, who estimates that you will need about 98% of the most common words or 27,000 to become near fluent!
 
 I am aware that just learning the most common words will not suddenly help me become fluent (sadly). But it certainly would help me to read and immerse myself more without having to pick up the dictionary all the time.
 
@@ -42,7 +55,7 @@ Pretty soon however, I found some problems with the Anki deck:
 
 So I set out to improve my learning experience and I wanted to create my own word frequency list for fun with the data I already had.
 
-*Note: While researching for this blog post I realized that I really should have looked deeper into available resources. For example, I could've easily uses [this available word frequency list](https://github.com/rspeer/wordfreq). Note sure what happened there and I missed it. Whoops 🤦! But at least I learned lots of things along the way (and I think my list used more data).*
+*Note: While researching for this blog post I realized that I really should have looked deeper into available resources. For example, I could've easily uses [this available word frequency list](https://github.com/rspeer/wordfreq). Note sure what happened there and I missed it. Whoops 🤦! But at least I learned lots of things along the way.*
 
 ### Where To Find Which Words
 
@@ -58,28 +71,32 @@ Tối sẽ thành công. (I will succeed.)
 
 Here, we want to consider the words `Tối`, `sẽ` and `thành công` as it means succeed, instead of its compounds. This task is called *text or word segmentation* and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
 
+After this, we need to analyze the frequency of each segmented word and need to decide for a cut off point. Although probably not really scientific, I choose the previously mentioned 98% mark for the rest of this post as benchmark for the word extraction.
+
 ## Solution
 
 So to go ahead and extract these words we will need to:
 
 1. Select, download and pre-process the corpora.
 2. Apply word segmentation to all sentences to find the correct words.
-3. Count and merge the word frequencies for all documents
+3. Count, merge and analyze the word frequencies for all documents
 
-### Corpora
+### 1. Corpora
 
 I wanted to include two types of corpus: First, texts that are more formal such as the news and Wikipedia and second more casual conversations. For this I decided on the following corpora:
 
-1. Binhvq News Corpus {% cite vuongquocBinhvqNewscorpusCorpus2024 %}, which includes news with about 111 million words
+1. Binhvq News Corpus {% cite vuongquocBinhvqNewscorpusCorpus2024 %}, which includes news
+    - About 20 GB with about 3 billion words
 2. viwik18 {% cite NTT123Viwik18Vietnamese2018 %}, which is a dump of the vietnamese wikipedia from 2018
+    - About 98 MB with about 27 million words
 3. Facebook comment corpus which was also included in the repo of the Binhvq News Corpus.
+    - About 444 MB with about 81 million words
 4. opensubtitles.org.Actually.Open.Edition {% cite 5719123SubtitlesOpensubtitlesorg %} which is a (questionable?) dump of subtitle files from Open Subtitles
+    - About 379 MB with about 122 million words
 
-We can just download the corpora and start working with them, as they already are in a readable format. Basically they are just raw text, split across many small files.
+We can just download the corpora and start working with them, as they already are in a readable format. Basically they are just raw text, split across many small files. Except the subtitle files, which need some extra processing described in the next section.
 
-In total, we have TODO.
-
-That is, except for the subtitles files.
+I estimated the size with the `du -sh` command and used `wc -w` to count the number of words. So in total we have about 21 GB worth of data with more than 3 billion words.
 
 #### Processing Open Subtitles Files
 
@@ -92,13 +109,25 @@ Processing the subtitle files involves a bit more work. I will only summarize th
 
 With the text available, we proceed with the next step of processing: the word segmentation described earlier.
 
-### Word Segmentation
+### 2. Word Segmentation
 
-To perform the word segmentation, I chose to go for a non-deep learning approach for which I have two reasons. First, I thought using a deep learning model would take forever to process everything. Second, after a quick search I found a paper {% cite vuVnCoreNLPVietnameseNatural2018 %} and its Github Repo {% cite corenlpVncorenlpVnCoreNLP2024 %} written in Java which describes a "transformation rule-based learning model". I'm not going to pretend to know what this exactly means, but "rule-based" sounds fast, and it's supposed to be accurate enough.
+To perform the word segmentation, I chose to go for a non-deep learning approach for which I have two reasons. First, I thought using a deep learning model would take forever to process everything. Second, after a quick search I found a paper {% cite vuVnCoreNLPVietnameseNatural2018 %} and its GitHub Repo {% cite corenlpVncorenlpVnCoreNLP2024 %} written in Java which describes a "transformation rule-based learning model". I'm not going to pretend to know what this exactly means, but "rule-based" sounds fast, and it's supposed to be accurate enough.
 
 I was not overly concerned with accuracy and hoped due to the size of the texts that it would average out. I was mostly concerned with getting it done, so I can actually stop procrastinating and start learning Vietnamese.
 
-Running the code, it seems like it doesn't use all available resources on my computer to process it, using only on a single core. Thus, I set out to run it concurrently on all my available computer cores.
+Let's take a look at an example how the results look like. If we have the following input (The police does not have time to continue verifying.)
+
+```Công an phường không có thời gian xác minh tiếp.```
+
+then the result will become
+
+```Công_an phường không có thời_gian xác_minh tiếp .```
+
+The compound words are combined with an underscore, which allows us to easily continue processing it.
+
+#### Implementation Details
+
+This section goes in a bit deeper how I accomplished this. Feel free to skip it.
 
 I haven't worked with concurrent Java code before and I feel a bit clunky with it. Once I started to use [Scala](https://www.scala-lang.org/) for work, I could never look back. But I never really worked with concurrency in Scala before either at this point and was a bit intimidated by it.
 
@@ -106,29 +135,90 @@ Turns out, that it is actually quite simple in this case! All you have to do is 
 
 Using this parallelized code, I was able to completely process all corpora quite quickly. I can't be bothered to run it again, but it must have been less than 2 hours to process everything.
 
-### Analyzing How Many Words You Need
+### 3. Analyzing Word Frequencies
 
-Let's recall that in the [Goal](#goal) section, I described that ... (something about word frequencies and we can reference the other thing again for the percentagers)
+So previously, we saw that Li {% cite liPowerLawDistribution2017 %} estimates we need 98% of the most common words to reach near near-native level, which I chose as a benchmark. Additionally, I want to group the words by the first, second, etc. thousand most common, so I can better track my progress.
+
+To accomplish this, the rest of the processing is actually quite easy. What we need to do at this point is
+
+1. Count all segmented words from all documents
+2. Merge them to a single file (and filter them by a list of valid words from a dictionary)
+3. Split this large file and group by the n-th thousand most common words
+
+These steps can be quite easily achieved by a couple of [python](https://github.com/DevinTDHa/vn-nlp-exp/tree/main/rdrsegmenter_wfreqs/python) and [shell](https://github.com/DevinTDHa/vn-nlp-exp/tree/main/rdrsegmenter_wfreqs/shell) scripts that can be found my repo {% cite DevinTDHaVnnlpexpNLP %}.
+
+If we just use the raw words, we will have some non-word characters and other nonsense in the list. To filter it I used a word list constructed from the following dictionaries:
+
+1. Wiktextract {% cite ylonenWiktextractWiktionaryMachineReadable2022 %} and its GitHub repo {% cite ylonenTatuylonenWiktextract2024 %}
+    - This is a great project, that parses Wiktionary XML dumps regularly and publishes them in a machine-readable JSONL format. It also includes entries for all languages. I will also use this for other parts of the project.
+2. The Free Vietnamese Dictionary Project {% cite hongocFreeVietnameseDictionary2004 %}
+   - This seems to be a rather old project for a free Vietnamese dictionary from Uni Leipzig. The data available for download, but it's a bit of a hassle to use it directly. I wrote a parser for it to convert it to the same JSONL format as the Wiktextract project {% cite haDevinTDHaExporterFreeVietnameseDictionaryProject2024 %}.
+
+After all of this, we will have a folder that looks like this:
+
+```sh
+$ ls
+most_frequent_01.txt  most_frequent_06.txt  most_frequent_11.txt  most_frequent_16.txt  most_frequent_21.txt
+most_frequent_02.txt  most_frequent_07.txt  most_frequent_12.txt  most_frequent_17.txt  most_frequent_22.txt
+most_frequent_03.txt  most_frequent_08.txt  most_frequent_13.txt  most_frequent_18.txt  most_frequent_23.txt
+most_frequent_04.txt  most_frequent_09.txt  most_frequent_14.txt  most_frequent_19.txt  most_frequent_24.txt
+most_frequent_05.txt  most_frequent_10.txt  most_frequent_15.txt  most_frequent_20.txt
+```
+
+And let's see how the first 20 entries of the word frequencies look like :
+
+```text
+và,41599096
+của,41009489
+các,29460924
+là,29311617
+có,27590205
+trong,27345997
+được,25208913
+đã,24565107
+cho,23718032
+với,22242832
+không,20117105
+một,19513294
+người,18231853
+những,18118913
+để,14998163
+khi,14225072
+này,14098654
+ở,13816430
+về,13204218
+đến,13017067
+```
+
+*Note: (in `most_frequent_01.txt` the counts will be removed, for a different feature. See [Future Work](#conclusion-and-future-work).)*
+
+Neat! The frequency lists of each corpus, as well as the merged one can be found in the releases of my GitHub repo {% cite DevinTDHaVnnlpexpNLP %}.
+
+#### Frequency Distribution
+
+Having all extracted this data, I also wanted to see how the distribution of the words looked like. Additionally, I wanted to calculate amount of words needed to hit the thresholds (80%, 90%, 95%, 98%, 99%, 99.5%) mentioned in the blog post by Li {% cite liPowerLawDistribution2017 %}:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/projects/VN/word_frequencies.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="assets/img/projects/VN/word_frequencies.png" title="Plot Of Word Frequencies" class="img-fluid rounded z-depth-1" zoomable=true caption="Distribution of word frequencies"%}
     </div>
 </div>
-<div class="caption">
-    TODO: Caption
-</div>
+
+We see that we can't see much because the distribution is very dense at the most common words. However, it seems like the vocabulary size for covering the threshold seems to be lower in Vietnamese. We previously said saw that we need 27,000 to hit near-native level. If we assume the same threshold percentage in Vietnamese, then we would only need 7,000.
+
+As a bonus I plotted the whole thing again on a Log10 scale, to get a prettier plot:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/projects/VN/word_frequencies_log10.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="assets/img/projects/VN/word_frequencies_log10.png" title="Plot of Word Frequencies on Log10 scale" class="img-fluid rounded z-depth-1" zoomable=true caption="Word Frequencies on a Log10 scale. I think it looks beautiful." %}
     </div>
 </div>
-<div class="caption">
-    Word Frequencies on Log10 scale. TODO: How to read this.
-</div>
+
+How we can read this is we look at the tenth power at the index to get a feel for the magnitude. For example, at index 0 we have more than $$10^7$$, so tens of millions of occurences, while at the 98% mark we are at about $$10^4$$ meaning tens of thousands.
 
 ## Conclusion and Future Work
+
+To conclude this post, we have taken a look at how to 
 
 Next part with automatic Anki card creation.
 
