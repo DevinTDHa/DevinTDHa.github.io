@@ -12,7 +12,9 @@ thumbnail: assets/img/projects/VN/word_frequencies_log10.png
 related_publications: true
 ---
 
-This post is the first in a series about tools for Vietnamese language learning tools. I will describe, how we can extract the most common words in a number of large documents in the Vietnamese language.
+This post is the first in a series about tools for Vietnamese language learning tools. I will describe, how we can extract the most common words in a number of large documents in the Vietnamese language. This list can then be used to create a vocabulary list for study.
+
+For the whole project, see the [dedicated project page](/projects/vietnamese-language-tools/).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -23,7 +25,6 @@ This post is the first in a series about tools for Vietnamese language learning 
     Word Frequencies on Log10 scale. Sneak peak at what's to come!
 </div>
 
-For the whole project, see the [Projects page](/projects).
 
 > **Summary**
 >

@@ -11,54 +11,32 @@ toc:
   beginning: true
 ---
 
-This year I really set out to improve my Vietnamese. My parents are Vietnamese, so I have a base understanding of the language but it frustrates me that I can't talk to them about more topics.
+## Introduction
 
-Oh, and special thanks to my girlfriend for providing me with the thumbnail image {% cite fayca_anki_vietnamese %}!
+This year I really set out to improve my Vietnamese. My parents are Vietnamese, so I have a base understanding of the language, but it frustrates me that I can't talk to them about more topics. I already started with Duo Lingo a while ago, but it was time to take it to the next level and really commit to it. It has become my main hobby now!
+
+But lots of parts of language learning are repetitive and tedious. For example, imagine adding all the words _manually_ to your [Anki](https://apps.ankiweb.net/) deck. Inconceivable! Of course, I can use my skills gained throughout my education and career to help me with this and have some fun in the process.
+
+This is also the main reason why I started this blog in the first place. I feel like I created some results that are worth sharing to other people who are studying Vietnamese or perhaps another low-resource language.
+
+Oh, and special thanks to my girlfriend for providing me with the thumbnail image {% cite fayca_anki_vietnamese %}, it turned out great!
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         <div style="max-width: 300px; margin: auto;">
-            {% include figure.liquid loading="eager" path="assets/img/projects/VN/anki_vietnam.png" title="duck_494" class="img-fluid rounded z-depth-1" %}
+            {% include figure.liquid loading="eager" path="assets/img/projects/VN/anki_vietnam.png" title="vn_anki" class="img-fluid rounded z-depth-1" zoomable=true %}
         </div>
     </div>
 </div>
 
-# Introduction
+## The Tools
 
-This project is about ...
+> This page is still under construction.
+{: .block-warning }
 
-The results of this project are the reason I wanted to start a blog in the first place... to use my skills as a computer scientist to help myself in learning the Vietnamese language and have fun in the process!
+Here I will list all the tools and things I built. I will structure them to separate blog post but collect them and summarize them here.
 
-TODO
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}
+1. [Extracting the most common words in Vietnamese](/blog/2024/extracting-most-common-words-in-vi/)
+    - We estimate how many of the most frequent words we need to reach a certain level of proficiency and I describe some tools that help with the extraction of this information.
+2. Automatic creation of Anki Cards with Wiktionary definitions and clozed examples
+3. Adding new words while consuming media with automatic speech recognition
