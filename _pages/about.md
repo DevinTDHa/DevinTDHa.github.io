@@ -8,20 +8,22 @@ profile:
   align: right
   image: me.jpg
   image_circular: false # crops the image to make it circular
-  more_info: Image from a family bike tour in Potsdam, Germany
+  more_info: Me on a family bike tour in Potsdam, Germany
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: false # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
 Hi there and welcome to my page!
 
-My name is Trung Duc Ha and I am a masters student in Computer Science at TU Berlin. I am currently writing my masters thesis in Explainable Artifical Intelligence (XAI). I am also currently employed part-time as a Software/Machine Learning Engineer at John Snow Labs working on the open source library [Spark NLP](https://sparknlp.org/).
+My name is Trung Đức Hà (also known as Devin at work) and I am a masters student in Computer Science at TU Berlin. I am currently writing my masters thesis in Explainable Artifical Intelligence (XAI) with the [Machine Learning Group at TU Berlin](https://web.ml.tu-berlin.de/). I am also currently employed part-time as a Software/Machine Learning Engineer at John Snow Labs working on the open source library [Spark NLP](https://sparknlp.org/).
 
-Outside of work and school, I like to build stuff (whether with software or with my hands), learn vietnamese, play electric guitar/produce music (currently on hold) and if time allows play video games.
+Outside of work and school, I like to build stuff (whether software or with my hands), learn Vietnamese, play electric guitar/produce music (currently on hold) and if time allows play video games.
 
-I want to use this page to describe some of my personal projects that I am doing. Hopefully my posts will be of use to someone else.
+I want to use this page to describe some of my personal projects that I am doing and let out my thoughts from time to time. Currently, I have a lot of fun building tools to enhance my Vietnamese learning. Check it out in my [Projects page](/projects).
+
+Hopefully my posts will be of use to someone else.
 
 Enjoy your stay!
 
