@@ -83,7 +83,7 @@ So to go ahead and extract these words we will need to:
 
 ### 1. Corpora
 
-I wanted to include two types of corpus: First, texts that are more formal such as the news and Wikipedia and second more casual conversations. For this I decided on the following corpora:
+First, I want to mention that there is a great GitHub repository which summarizes various language processing resources for Vietnamese called "awesome Vietnamese NLP" {% cite huynhVndeeAwsomevietnamesenlp2024 %} I wanted to include two types of corpus: First, texts that are more formal such as the news and Wikipedia and second more casual conversations. For this I decided on the following corpora:
 
 1. Binhvq News Corpus {% cite vuongquocBinhvqNewscorpusCorpus2024 %}, which includes news
     - About 20 GB with about 3 billion words
@@ -145,8 +145,6 @@ To accomplish this, the rest of the processing is actually quite easy. What we n
 2. Merge them to a single file (and filter them by a list of valid words from a dictionary)
 3. Split this large file and group by the n-th thousand most common words
 
-These steps can be quite easily achieved by a couple of [python](https://github.com/DevinTDHa/vn-nlp-exp/tree/main/rdrsegmenter_wfreqs/python) and [shell](https://github.com/DevinTDHa/vn-nlp-exp/tree/main/rdrsegmenter_wfreqs/shell) scripts that can be found my repo {% cite DevinTDHaVnnlpexpNLP %}.
-
 If we just use the raw words, we will have some non-word characters and other nonsense in the list. To filter it I used a word list constructed from the following dictionaries:
 
 1. Wiktextract {% cite ylonenWiktextractWiktionaryMachineReadable2022 %} and its GitHub repo {% cite ylonenTatuylonenWiktextract2024 %}
@@ -154,7 +152,9 @@ If we just use the raw words, we will have some non-word characters and other no
 2. The Free Vietnamese Dictionary Project {% cite hongocFreeVietnameseDictionary2004 %}
    - This seems to be a rather old project for a free Vietnamese dictionary from Uni Leipzig. The data available for download, but it's a bit of a hassle to use it directly. I wrote a parser for it to convert it to the same JSONL format as the Wiktextract project {% cite haDevinTDHaExporterFreeVietnameseDictionaryProject2024 %}.
 
-After all of this, we will have a folder that looks like this:
+All the steps above can be quite easily achieved by a couple of [python](https://github.com/DevinTDHa/vn-nlp-exp/tree/main/rdrsegmenter_wfreqs/python) and [shell](https://github.com/DevinTDHa/vn-nlp-exp/tree/main/rdrsegmenter_wfreqs/shell) scripts that can be found my repo {% cite DevinTDHaVnnlpexpNLP %}.
+
+After all of that, we will have a folder which contains the most frequent words split conveniently into files of 1000 lines each. This folder will look like this:
 
 ```sh
 $ ls
@@ -192,11 +192,11 @@ về,13204218
 
 *Note: (in `most_frequent_01.txt` the counts will be removed, for a different feature. See [Future Work](#conclusion-and-future-work).)*
 
-Neat! The frequency lists of each corpus, as well as the merged one can be found in the releases of my GitHub repo {% cite DevinTDHaVnnlpexpNLP %}.
+That's what we want. Neat! The frequency lists of each corpus, as well as the merged one can be found in the releases of my GitHub repo {% cite DevinTDHaVnnlpexpNLP %}.
 
 #### Frequency Distribution
 
-Having all extracted this data, I also wanted to see how the distribution of the words looked like. Additionally, I wanted to calculate amount of words needed to hit the thresholds (80%, 90%, 95%, 98%, 99%, 99.5%) mentioned in the blog post by Li {% cite liPowerLawDistribution2017 %}:
+Having all extracted this data, I also wanted to see how the distribution of the words looked like. Additionally, I wanted to calculate amount of words needed to hit the thresholds (80%, 90%, 95%, 98%, 99%, 99.5%) mentioned in the blog post by Li {% cite liPowerLawDistribution2017 %}. For this, I wrote a simple [python script](https://github.com/DevinTDHa/vn-nlp-exp/blob/main/rdrsegmenter_wfreqs/python/generate_freq_plot.py) which plots the rank of the word against its frequency and marks the thresholds. This is the result:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -218,10 +218,6 @@ How we can read this is we look at the tenth power at the index to get a feel fo
 
 ## Conclusion and Future Work
 
-To conclude this post, we have taken a look at how to 
+To conclude this post, we have taken a look at how to process corpora in the Vietnamese language and extract its word frequencies using tools found on GitHub, as well as some scripts that I wrote and published on GitHub {% cite DevinTDHaVnnlpexpNLP %}. After that, we found out how many of the most frequent words we need to reach a certain level of proficiency, which are about 7,000.
 
-Next part with automatic Anki card creation.
-
-- Also adding cards wastes a lot of time and is boring and tedious
-- Hint at next part where we create the Anki cards automatically
-- Published code at ...
+In the next post we will tackle next problem. Now that we have all the words it would be a *real* pain to add them manually add them to Anki. So what can we do? Of course spend a significant amount of time to automate it. It's actually pretty worth it though this time, I swear!
