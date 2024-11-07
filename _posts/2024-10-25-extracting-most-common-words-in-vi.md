@@ -37,7 +37,7 @@ For the whole project, see the [dedicated project page](/projects/vietnamese-lan
 
 ## Goal
 
-When learning a language, it is **useful** to know at least *some* words of the target language to understand it and be able to communicate with other people. But in which order should we learn these new words?
+When learning a language, it is **useful** to know at least _some_ words of the target language to understand it and be able to communicate with other people. But in which order should we learn these new words?
 
 As a starting point, I assumed that learning the most frequent words would be pretty good. And indeed, I read some discussions {% cite liPowerLawDistribution2017 SizeVocabularySet2021 %} where people have a similar approach to learning. In summary, learning the first 1000-2000 most common words lets you understand basic conversations, with more words allowing for more texts. Li {% cite liPowerLawDistribution2017 %} is painting a pretty bleak picture here, who estimates that you will need about 98% of the most common words, or 27,000 to become near-native!
 
@@ -55,11 +55,11 @@ Pretty soon however, I found some problems with the Anki deck:
 
 So I set out to improve my learning experience, and I wanted to create my own word frequency list for fun with the data I already had.
 
-*Note: While researching for this blog post, I realized that I really should have looked deeper into available resources. For example, I could've easily used [this available word frequency list](https://github.com/rspeer/wordfreq). Note sure what happened there and I missed it. Whoops 🤦! But at least I learned lots of things along the way.*
+_Note: While researching for this blog post, I realized that I really should have looked deeper into available resources. For example, I could've easily used [this available word frequency list](https://github.com/rspeer/wordfreq). Note sure what happened there and I missed it. Whoops 🤦! But at least I learned lots of things along the way._
 
 ### Where to Find Which Words
 
-So first, we will need to find some Vietnamese texts. I will describe which ones in the [Corpora](#corpora) section. For people unfamiliar with this term: According to Wiktionary, a *corpus* in our context is "a collection of writings in the form of an electronic database used for linguistic analyses".
+So first, we will need to find some Vietnamese texts. I will describe which ones in the [Corpora](#corpora) section. For people unfamiliar with this term: According to Wiktionary, a _corpus_ in our context is "a collection of writings in the form of an electronic database used for linguistic analyses".
 
 Moreover, we can't just use the raw words from the text. While the Vietnamese language does not have inflections like in English, we have to consider compound words, which Vietnamese utilizes heavily.
 
@@ -69,7 +69,7 @@ To illustrate this, let's take the following example sentence:
 Tối sẽ thành công. (I will succeed.)
 ```
 
-Here, we want to consider the words `Tối`, `sẽ` and `thành công` as it means succeed, instead of its compounds. This task is called *text or word segmentation* and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
+Here, we want to consider the words `Tối`, `sẽ` and `thành công` as it means succeed, instead of its compounds. This task is called _text or word segmentation_ and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
 
 After this, we need to analyze the frequency of each segmented word and need to decide on a cut-off point. Although probably not really scientific, I chose the previously mentioned 98% mark for the rest of this post as a benchmark for the word extraction.
 
@@ -86,13 +86,13 @@ So to go ahead and extract these words we will need to:
 First, I want to mention that there is a great GitHub repository that summarizes various language processing resources for Vietnamese called "awesome Vietnamese NLP" {% cite huynhVndeeAwsomevietnamesenlp2024 %} I wanted to include two types of corpus: First, texts that are more formal such as the news and Wikipedia, and second more casual conversations. For this I decided on the following corpora:
 
 1. Binhvq News Corpus {% cite vuongquocBinhvqNewscorpusCorpus2024 %}, which includes news
-    - About 20 GB with about 3 billion words
+   - About 20 GB with about 3 billion words
 2. viwik18 {% cite NTT123Viwik18Vietnamese2018 %}, which is a dump of the Vietnamese Wikipedia from 2018
-    - About 98 MB with about 27 million words
+   - About 98 MB with about 27 million words
 3. Facebook comment corpus, which was also included in the repo of the Binhvq News Corpus.
-    - About 444 MB with about 81 million words
+   - About 444 MB with about 81 million words
 4. opensubtitles.org.Actually.Open.Edition {% cite 5719123SubtitlesOpensubtitlesorg %} which is a (questionable?) dump of subtitle files from Open Subtitles
-    - About 379 MB with about 122 million words
+   - About 379 MB with about 122 million words
 
 We can just download the corpora and start working with them, as they already are in a readable format. Basically, they are just raw text, split across many small files. Except the subtitle files, which need some extra processing described in the next section.
 
@@ -104,7 +104,7 @@ Processing the subtitle files involves a bit more work. I will only summarize th
 
 1. Extract all subtitles zips that have the Vietnamese language code (vi)
 2. Parse the SRT files and join them together to a single line. This is because a sentence might be distributed over multiple lines.
-3. Use a *sentence segmentation model* to extract the sentences and write them to a text file.
+3. Use a _sentence segmentation model_ to extract the sentences and write them to a text file.
    - A sentence segmentation model separates a single line of text into sentences.
 
 With the text available, we proceed with the next step of processing: the word segmentation described earlier.
@@ -117,11 +117,11 @@ I was not overly concerned with accuracy and hoped, due to the size of the texts
 
 Let's take a look at an example of what the results look like. If we have the following input (The police do not have time to continue verifying.)
 
-```Công an phường không có thời gian xác minh tiếp.```
+`Công an phường không có thời gian xác minh tiếp.`
 
 then the result will become
 
-```Công_an phường không có thời_gian xác_minh tiếp .```
+`Công_an phường không có thời_gian xác_minh tiếp .`
 
 The compound words are combined with an underscore, which allows us to easily continue processing it.
 
@@ -148,7 +148,7 @@ To accomplish this, the rest of the processing is actually quite easy. What we n
 If we just use the raw words, we will have some non-word characters and other nonsense in the list. To filter it, I used a word list constructed from the following dictionaries:
 
 1. Wiktextract {% cite ylonenWiktextractWiktionaryMachineReadable2022 %} and its GitHub repo {% cite ylonenTatuylonenWiktextract2024 %}
-    - This is a great project that parses Wiktionary XML dumps regularly and publishes them in a machine-readable JSONL format. It also includes entries for all languages. I will also use this for other parts of the project.
+   - This is a great project that parses Wiktionary XML dumps regularly and publishes them in a machine-readable JSONL format. It also includes entries for all languages. I will also use this for other parts of the project.
 2. The Free Vietnamese Dictionary Project {% cite hongocFreeVietnameseDictionary2004 %}
    - This seems to be a rather old project for a free Vietnamese dictionary from Uni Leipzig. The data is available for download, but it's a bit of a hassle to use it directly. I wrote a parser for it to convert it to the same JSONL format as the Wiktextract project {% cite haDevinTDHaExporterFreeVietnameseDictionaryProject2024 %}.
 
@@ -190,7 +190,7 @@ về,13204218
 đến,13017067
 ```
 
-*Note: In `most_frequent_01.txt` the counts will be removed for a different feature. See [Future Work](#conclusion-and-future-work).*
+_Note: In `most_frequent_01.txt` the counts will be removed for a different feature. See [Future Work](#conclusion-and-future-work)._
 
 That's what we want. Neat! The frequency lists of each corpus, as well as the merged one, can be found in the releases of my GitHub repo {% cite DevinTDHaVnnlpexpNLP %}.
 
@@ -220,4 +220,4 @@ How we can read this is we look at the tenth power at the index to get a feel fo
 
 To conclude this post, we have taken a look at how to process corpora in the Vietnamese language and extract its word frequencies using tools found on GitHub, as well as some scripts that I wrote and published on GitHub {% cite DevinTDHaVnnlpexpNLP %}. After that, we found out how many of the most frequent words we need to reach a certain level of proficiency, which are about 7,000.
 
-In the next post, we will tackle the next problem. Now that we have all the words, it would be a *real* pain to manually add them to Anki. So what can we do? Of course, spend a significant amount of time automating it. It's actually pretty worth it though, I swear!
+In the next post, we will tackle the next problem. Now that we have all the words, it would be a _real_ pain to manually add them to Anki. So what can we do? Of course, spend a significant amount of time automating it. It's actually pretty worth it though, I swear!

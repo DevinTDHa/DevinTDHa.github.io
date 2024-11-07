@@ -7,7 +7,7 @@ img: assets/img/projects/VN/anki_vietnam.png
 category: Vietnamese
 related_publications: true
 date: 2024-10-25
-toc: 
+toc:
   beginning: true
 ---
 
@@ -32,11 +32,11 @@ Oh, and special thanks to my girlfriend for providing me with the thumbnail imag
 ## The Tools
 
 > This page is still under construction.
-{: .block-warning }
+> {: .block-warning }
 
 Here I will list all the tools and things I built. I will structure them into separate blog posts but collect them and summarize them here.
 
 1. [Extracting the most common words in Vietnamese](/blog/2024/extracting-most-common-words-in-vi/)
-    - We estimate how many of the most frequent words we need to reach a certain level of proficiency, and I describe some tools that help with the extraction of this information.
+   - We estimate how many of the most frequent words we need to reach a certain level of proficiency, and I describe some tools that help with the extraction of this information.
 2. Automatic creation of Anki Cards with Wiktionary definitions and clozed examples
 3. Adding new words while consuming media with automatic speech recognition
