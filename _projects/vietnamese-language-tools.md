@@ -32,7 +32,7 @@ Oh, and special thanks to my girlfriend for providing me with the thumbnail imag
 ## The Tools
 
 > This page is still under construction.
-> {: .block-warning }
+{: .block-warning }
 
 Here I will list all the tools and things I built. I will structure them into separate blog posts but collect them and summarize them here.
 

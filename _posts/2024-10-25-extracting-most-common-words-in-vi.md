@@ -7,6 +7,7 @@ tags: natural-language-processing vietnamese
 categories: vietnamese-language-learning-tools
 related_posts: false
 toc:
+  beginning: true
   sidebar: left
 thumbnail: assets/img/projects/VN/word_frequencies_log10.png
 related_publications: true
@@ -37,7 +38,7 @@ For the whole project, see the [dedicated project page](/projects/vietnamese-lan
 
 ## Goal
 
-When learning a language, it is **useful** to know at least _some_ words of the target language to understand it and be able to communicate with other people. But in which order should we learn these new words?
+When learning a language, it is useful to know at least _some_ words of the target language to understand it and be able to communicate with other people. But in which order should we learn these new words?
 
 As a starting point, I assumed that learning the most frequent words would be pretty good. And indeed, I read some discussions {% cite liPowerLawDistribution2017 SizeVocabularySet2021 %} where people have a similar approach to learning. In summary, learning the first 1000-2000 most common words lets you understand basic conversations, with more words allowing for more texts. Li {% cite liPowerLawDistribution2017 %} is painting a pretty bleak picture here, who estimates that you will need about 98% of the most common words, or 27,000 to become near-native!
 
@@ -66,10 +67,10 @@ Moreover, we can't just use the raw words from the text. While the Vietnamese la
 To illustrate this, let's take the following example sentence:
 
 ```text
-Tối sẽ thành công. (I will succeed.)
+Tôi sẽ thành công. (I will succeed.)
 ```
 
-Here, we want to consider the words `Tối`, `sẽ` and `thành công` as it means succeed, instead of its compounds. This task is called _text or word segmentation_ and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
+Here, we want to consider the words `Tôi`, `sẽ` and `thành công` as it means succeed, instead of its compounds. This task is called _text or word segmentation_ and I will describe a way to do this quickly in the [Word Segmentation](#word-segmentation) section.
 
 After this, we need to analyze the frequency of each segmented word and need to decide on a cut-off point. Although probably not really scientific, I chose the previously mentioned 98% mark for the rest of this post as a benchmark for the word extraction.
 
