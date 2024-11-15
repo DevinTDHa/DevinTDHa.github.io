@@ -54,9 +54,11 @@ strong {
   font-family: "LexicaUltralegible", sans-serif;
 }
 
-// Justify Text, except for span
-p {
-  text-align: justify;
+// Justify Text for markdown content
+#markdown-content {
+    p {
+    text-align: justify;
+  }
 }
 
 strong {
@@ -743,8 +745,8 @@ footer.sticky-bottom {
     list-style: none;
     padding: 0;
     margin-top: 0;
-    p {
-      text-align: left;
+    p { // Reference entries
+      overflow-x: auto;
     }
 
     li {
