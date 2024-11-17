@@ -56,7 +56,7 @@ strong {
 
 // Justify Text for markdown content
 #markdown-content {
-    p {
+  p {
     text-align: justify;
   }
 }
@@ -745,7 +745,8 @@ footer.sticky-bottom {
     list-style: none;
     padding: 0;
     margin-top: 0;
-    p { // Reference entries
+    p {
+      // Reference entries
       overflow-x: auto;
     }
 

@@ -31,8 +31,10 @@ Oh, and special thanks to my girlfriend for providing me with the thumbnail imag
 
 ## The Tools
 
+<!-- prettier-ignore-start -->
 > This page is still under construction.
 {: .block-warning }
+<!-- prettier-ignore-end -->
 
 Here I will list all the tools and things I built. I will structure them into separate blog posts but collect them and summarize them here.
 
