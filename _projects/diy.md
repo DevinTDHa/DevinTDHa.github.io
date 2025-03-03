@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Tools for Vietnamese Language Learning
-description: Posts describing tools for Vietnamese language learning
-img: assets/img/projects/VN/anki_vietnam.png
-#importance: 1
+title: DIY
+description: Posts for various DIY Projects
+img: assets/img/projects/diy/hammer-and-screwdriver.webp
+importance: 1
 category: Vietnamese
 related_publications: true
 date: 2024-10-25
