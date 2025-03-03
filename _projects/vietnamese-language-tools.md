@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Tools for Vietnamese Language Learning
-description: Series of posts describing tools for Vietnamese language learning
+description: Posts describing tools for Vietnamese language learning
 img: assets/img/projects/VN/anki_vietnam.png
 #importance: 1
 category: Vietnamese
