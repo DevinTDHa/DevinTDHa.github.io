@@ -29,6 +29,6 @@ My name is Trung Đức Hà (also known as Devin at work). I recently finished m
 
 I am a nerd interested in all manner of things. This includes science, nature, music theory/production, films and philosophy. In my free time, I like to build stuff (whether software or with my hands), learn Vietnamese, play electric guitar/produce music and play video games.
 
-I want to use this website to describe some of my personal projects that I am doing and let out my thoughts from time to time. Currently, I have a lot of fun building tools to enhance my Vietnamese learning. Check it out on my [Projects page](/projects)! Hopefully my posts could be useful for other people like you as well.
+I want to use this website to describe some of my personal projects that I am doing and let out my thoughts from time to time. Currently, I have a lot of fun building tools to enhance my Vietnamese learning. You can check it out on my [Projects page](/projects). Hopefully my posts could be useful for other people (like you!) as well.
 
 Enjoy your stay!
