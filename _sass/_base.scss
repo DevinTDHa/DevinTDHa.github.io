@@ -4,6 +4,40 @@
 
 // Typography
 
+// Lexica Font
+@font-face {
+  font-family: "LexicaUltralegible";
+  src: url("fonts/LexicaUltralegible-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LexicaUltralegible";
+  src: url("fonts/LexicaUltralegible-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LexicaUltralegible";
+  src: url("fonts/LexicaUltralegible-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "LexicaUltralegible";
+  src: url("fonts/LexicaUltralegible-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+}
+
+// Global Font Size Increase
+html {
+  font-size: 18px; /* 1rem now equals 18px */
+}
+
 p,
 h1,
 h2,
@@ -17,6 +51,21 @@ li,
 span,
 strong {
   color: var(--global-text-color);
+  font-family: "LexicaUltralegible", sans-serif;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+strong em,
+em strong {
+  font-weight: bold;
+  font-style: italic;
 }
 
 hr {
@@ -51,6 +100,7 @@ table.table a {
 
 .table-dark {
   background-color: transparent;
+
   &.table-bordered {
     border: 1px solid var(--global-divider-color) !important;
   }
@@ -135,7 +185,8 @@ blockquote {
 // Checklist
 
 ul.task-list {
-  list-style-type: none; /* Remove bullets from all levels */
+  list-style-type: none;
+  /* Remove bullets from all levels */
 }
 
 ul.task-list > li ul {
@@ -725,6 +776,10 @@ footer.sticky-bottom {
     list-style: none;
     padding: 0;
     margin-top: 0;
+    p {
+      // Reference entries
+      overflow-x: auto;
+    }
 
     li {
       margin-bottom: 1rem;
@@ -802,6 +857,7 @@ footer.sticky-bottom {
             border-color: var(--global-theme-color);
           }
         }
+
         a.award.btn {
           border-color: var(--global-highlight-color);
         }
@@ -809,6 +865,7 @@ footer.sticky-bottom {
 
       .badges {
         padding-bottom: 0.5rem;
+
         span {
           display: inline-block;
           color: $black-color;
@@ -862,9 +919,11 @@ footer.sticky-bottom {
         border-color: var(--global-text-color);
       }
     }
+
     div.award.hidden {
       border: dashed 1px var(--global-bg-color);
     }
+
     div.award.hidden.open {
       border-color: var(--global-highlight-color);
     }
@@ -1098,6 +1157,13 @@ nav[data-toggle="toc"] {
     height: 0;
     top: 0;
   }
+
+  #toc-sidebar {
+    .navbar-nav {
+      visibility: hidden;
+      display: none;
+    }
+  }
 }
 
 .featured-posts {
@@ -1293,6 +1359,7 @@ ninja-keys::part(ninja-input-wrapper) {
   .newsletter-error {
     font-size: 16px !important;
   }
+
   .newsletter-form-container {
     margin-right: 20px;
     margin-left: 20px;
