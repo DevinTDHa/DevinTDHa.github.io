@@ -42,8 +42,13 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-finally-found-the-time-to-create-a-blog-i-had-this-on-my-to-do-list-for-a-while-but-now-i-have-the-right-occasion-to-do-so-in-the-next-days-i-will-create-some-posts-describing-how-i-created-my-vietnamese-anki-decks",
-          title: 'Finally found the time to create a blog! I had this on my...',
+            },},{id: "news-finally-found-the-time-to-create-a-blog",
+          title: 'Finally found the time to create a blog!',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/announcement_1/";
+            },},{id: "news-i-finished-my-master-s-thesis-in-xai-whoo-a-paper-containing-a-condensed-version-of-the-results-was-also-accepted-to-xai-2025",
+          title: 'I finished my master’s thesis in XAI whoo! A paper containing a condensed...',
           description: "",
           section: "News",},{id: "projects-tools-for-vietnamese-language-learning",
           title: 'Tools for Vietnamese Language Learning',
