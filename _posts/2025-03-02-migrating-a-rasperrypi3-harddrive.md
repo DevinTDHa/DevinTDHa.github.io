@@ -13,6 +13,15 @@ thumbnail: assets/img/projects/diy/harddrive-pi.webp
 related_publications: true
 ---
 
+> **Update 2025/04/20**
+>
+> Since I wrote this blog post, my Pi died because of this error and refused to boot at all. I am not sure why the external hard drive settings helped improved the situation at all to be honest.
+>
+> I set up a fresh Raspberry Pi OS installation and performed the same hard drive cloning process, as described below. This has been running stable for a while now.
+{: .block-warning }
+
+---
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0" style="max-width: 300px; margin: auto;">
         {% include figure.liquid path="assets/img/projects/diy/harddrive-pi.webp" title="External Hard Drive and Raspberry pi" class="rounded z-depth-1" zoomable=false %}
@@ -130,5 +139,7 @@ ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", RUN+="/usr/sbin/hdparm -S 0 -B
 where `/dev/sda` is my hard drive. With this set up the Pi seems to be running very stable! I saw it running for at least a month straight with no issue. That is, until I tried to mess with these settings (no need to have it at full power after all!) but it just caused problems. I ran out of patience and just left it at that.
 
 ## Conclusion
+
+SEE UPDATE ON THE TOP!
 
 In this post we saw how we can migrate a Pi running on a faulty SD card to a more permanet form of storage, namely a hard drive in an external enclosure. To achieve this, we cloned the running partition using `rpi-clone` and adjusted `cmdline.txt` to specify the root partition during boot to the hard drive. Finally, we ironed out some kinks using `hdparm` to disable some power saving settings of the drive, which caused issues.
